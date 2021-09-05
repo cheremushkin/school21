@@ -16,7 +16,8 @@ int	main(void)
 	char	to_find5[] = "This is string";
 	char	to_find6[] = "This is string!";
 	char	to_find7[] = "where?";
-	char	to_find8[] = "";
+	char	to_find8[] = "stre";
+	char	to_find9[] = "";
 	test(str, to_find1);
 	test(str, to_find2);
 	test(str, to_find3);
@@ -25,6 +26,7 @@ int	main(void)
 	test(str, to_find6);
 	test(str, to_find7);
 	test(str, to_find8);
+	test(str, to_find9);
 	test("", "42");
 	return (0);
 }
