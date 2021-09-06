@@ -21,6 +21,7 @@ int	main(void)
 	test("Hello", " w", 13);
 	test("", "Hello world!", 15);
 	test("Hello", ", append very long string", 15);
+	test("Hello", " world!", 3);
 	
 	return (0);
 }
