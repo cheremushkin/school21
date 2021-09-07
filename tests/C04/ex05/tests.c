@@ -16,6 +16,7 @@ int main(void)
 	test(" ---+--+1234ab567", "ab");
 	test(" ---+--+ab567ba", "ba");
 	test(" ---+--+7776", "abcdefg");
+	test(" ---+--+7776abc", "7\e");
 	test(" ---+--+7776abc", "abcdefg");
 	return (0);
 }
