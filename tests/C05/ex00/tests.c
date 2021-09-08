@@ -7,7 +7,7 @@ void	test(int nb)
 
 int	main(void)
 {
-	for (int i = -1; i < 15; i++)
+	for (int i = -1; i < 13; i++)
 		test(i);
 	return (0);
 }
