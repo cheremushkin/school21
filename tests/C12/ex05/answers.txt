@@ -1,2 +1,0 @@
-(0) third -> (1) second -> (2) first -> null
-null

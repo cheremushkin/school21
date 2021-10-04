@@ -1,3 +1,0 @@
-String
-String with number 42
-Ooo spooky!
