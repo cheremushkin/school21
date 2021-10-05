@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 22:29:06 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/05 21:59:24 by lteresia         ###   ########.fr       */
+/*   Created: 2021/10/05 21:46:06 by lteresia          #+#    #+#             */
+/*   Updated: 2021/10/05 21:50:23 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*dest;
-	int		src_len;
+	t_list	*new;
+	t_list	*tmp;
 
-	src_len = ft_strlen(src);
-	dest = (char *) malloc(sizeof(char) * (src_len + 1));
-	if (dest == NULL)
+	if (!f || !del)
 		return (NULL);
-	return (ft_memcpy(dest, src, src_len + 1));
+	new = NULL;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (tmp == NULL)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, tmp);
+		lst = lst->next;
+	}
+	return (new);
 }

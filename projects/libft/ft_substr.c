@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 19:01:03 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/04 20:52:03 by lteresia         ###   ########.fr       */
+/*   Created: 2021/10/05 18:01:18 by lteresia          #+#    #+#             */
+/*   Updated: 2021/10/05 18:22:12 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+static int	ft_min(int const n, int const m)
 {
-	size_t	i;
+	if (n > m)
+		return (m);
+	return (n);
+}
 
-	if (dst == NULL && src == NULL)
+static int	ft_max(int const n, int const m)
+{
+	if (n > m)
+		return (n);
+	return (m);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*dst;
+	int		size;
+
+	if (s == NULL)
 		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *) dst)[i] = ((unsigned char *) src)[i];
-		i++;
-	}
+	size = ft_min(len, ft_max(ft_strlen(s) - start, 0)) + 1;
+	dst = (char *) malloc(sizeof(char) * size);
+	if (dst == NULL)
+		return (NULL);
+	ft_strlcpy(dst, s + start, size);
 	return (dst);
 }

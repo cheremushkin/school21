@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 22:29:06 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/05 21:59:24 by lteresia         ###   ########.fr       */
+/*   Created: 2021/10/05 17:05:25 by lteresia          #+#    #+#             */
+/*   Updated: 2021/10/05 17:05:25 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	*dest;
-	int		src_len;
-
-	src_len = ft_strlen(src);
-	dest = (char *) malloc(sizeof(char) * (src_len + 1));
-	if (dest == NULL)
-		return (NULL);
-	return (ft_memcpy(dest, src, src_len + 1));
+	if (s == NULL)
+		return ;
+	write(fd, s, ft_strlen(s));
+	ft_putchar_fd('\n', fd);
 }
