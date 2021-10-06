@@ -6,7 +6,7 @@
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 18:26:59 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/05 20:19:56 by lteresia         ###   ########.fr       */
+/*   Updated: 2021/10/06 15:35:59 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_rstrtrim(char const *s, int *hash)
 	int	i;
 
 	i = (int) ft_strlen(s) - 1;
-	while (s[i] && ft_istrimable(s[i], hash))
+	while (i >= 0 && ft_istrimable(s[i], hash))
 		i--;
 	return (i);
 }

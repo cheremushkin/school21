@@ -58,7 +58,7 @@ OBJS_B		:= $(SRCS_B:.c=.o)
 
 RM			:= rm -rf
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
