@@ -6,7 +6,7 @@
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 02:59:40 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/11 22:23:40 by lteresia         ###   ########.fr       */
+/*   Updated: 2021/10/12 15:58:23 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include "ft_eval.h"
 # include "ft_evals.h"
 # include "ft_convs.h"
 

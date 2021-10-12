@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_eval.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 21:45:11 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/12 17:41:34 by lteresia         ###   ########.fr       */
+/*   Created: 2021/10/10 18:28:31 by lteresia          #+#    #+#             */
+/*   Updated: 2021/10/12 15:58:23 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#ifndef FT_EVAL_H
+# define FT_EVAL_H
 
-int	main(void)
-{
-	printf("abc %+5d", 5);
-	return (0);
-}
+# include <stdarg.h>
+# include "ft_convs.h"
+
+void	ft_eval_conv(va_list args,
+			void (*evals[9])(va_list args, t_conv *conv),
+			t_conv *conv);
+
+#endif

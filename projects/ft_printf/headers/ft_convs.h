@@ -16,22 +16,20 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include "libft.h"
-
-# define CONVS		"cspdiuxX%"
-# define OPTIONS	"#+- .0"
+# include "ft_parsers.h"
 
 typedef struct s_conv
 {
 	char	*output;
 	char	*end;
 	size_t	len;
-	char	conv;
+	char	code;
+
+	t_flags	*flags;
+	int		width;
+	int		precision;
 }	t_conv;
 
-int		ft_is_conv(char c);
-t_conv	*ft_parse_conv(char *str);
-void	ft_eval_conv(va_list args,
-			void (*evals[9])(va_list args, t_conv *conv),
-			t_conv *conv);
+t_conv	*ft_parse(char *str);
 
 #endif
