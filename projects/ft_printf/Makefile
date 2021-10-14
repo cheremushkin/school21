@@ -3,7 +3,7 @@ LIB_NAME	= libftprintf.a
 
 LIB			= ar rcs
 CC			= gcc
-CFLAGS		= -g -Wall
+CFLAGS		= -Wall
 
 HEADERS_DIR	= ./headers
 SRC_DIR		= ./sources
@@ -24,6 +24,7 @@ RM			= rm -rf
 
 all: $(NAME)
 lib: $(LIB_NAME)
+bonus: all
 
 # debug: CFLAGS += -g
 debug: all

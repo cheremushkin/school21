@@ -17,7 +17,7 @@
 # include "ft_convs.h"
 
 void	ft_eval_conv(va_list args,
-			void (*evals[9])(va_list args, t_conv *conv),
+			int (*evals[9])(va_list args, t_conv *conv),
 			t_conv *conv);
 
 #endif

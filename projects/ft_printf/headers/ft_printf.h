@@ -24,14 +24,14 @@ typedef struct s_parser_elem
 {
 	char					*start;
 	size_t 					len;
-	t_conv			*specs;
+	t_conv					*conv;
 	struct s_parser_elem	*next;
 }	t_parser_elem;
 
 typedef struct s_parser
 {
 	va_list			args;
-	void			(*evals[9])(va_list args, t_conv *conv);
+	int				(*evals[9])(va_list args, t_conv *conv);
 	t_parser_elem	*head;
 	t_parser_elem	*tail;
 	size_t			size;

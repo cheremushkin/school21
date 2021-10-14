@@ -64,5 +64,5 @@ int	ft_parse_precision(char *str, int *i)
 		(*i)++;
 		return (ft_parse_n(str, i));
 	}
-	return (0);
+	return (-1);
 }

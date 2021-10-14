@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# define FT_MAX(N, M) (N > M ? N : M)
+# define FT_MIN(N, M) (N > M ? M : N)
+
 typedef struct s_list
 {
 	void			*content;
@@ -42,7 +45,9 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *str);
+int 	ft_malloc_(void **p, size_t size);
 void	*ft_calloc(size_t count, size_t size);
+int 	ft_calloc_(void **p, size_t count, size_t size);
 char	*ft_strdup(const char *src);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	**ft_split(char const *str, char c);

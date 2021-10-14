@@ -14,12 +14,13 @@
 # define FT_EVALS_H
 
 # include <stdarg.h>
+# include "libft.h"
 # include "ft_convs.h"
 
-void	ft_eval_char(va_list args, t_conv *conv);
-void    ft_eval_int(va_list args, t_conv *conv);
-void    ft_eval_uint(va_list args, t_conv *conv);
-void    ft_eval_string(va_list args, t_conv *conv);
-void    ft_eval_percent(va_list args, t_conv *conv);
+int ft_eval_char(va_list args, t_conv *conv);
+int ft_eval_int(va_list args, t_conv *conv);
+int ft_eval_uint(va_list args, t_conv *conv);
+int ft_eval_string(va_list args, t_conv *conv);
+int ft_eval_percent(va_list args, t_conv *conv);
 
 #endif

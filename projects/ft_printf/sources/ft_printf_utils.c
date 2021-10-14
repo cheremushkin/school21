@@ -53,7 +53,7 @@ t_parser_elem	*ft_init_parser_elem(char *start, size_t len, t_conv *conv)
 	elem = (t_parser_elem *) malloc(sizeof(t_parser_elem));
 	elem->start = start;
 	elem->len = len;
-	elem->specs = conv;
+	elem->conv = conv;
 	elem->next = NULL;
 	return (elem);
 }
@@ -68,12 +68,22 @@ void	ft_print_parser(char *str, t_parser *parser)
 		if (elem->start)
 			write(1, elem->start, elem->len);
 		else
-			write(1, elem->specs->output, elem->len);
+			write(1, elem->conv->out->str, elem->len);
 		elem = elem->next;
 	}
 }
 
 void	ft_free_parser(t_parser *parser)
 {
+	t_parser_elem	*tmp;
+	t_parser_elem	*elem;
+
+	elem = parser->head;
+	while (elem)
+	{
+		tmp = elem;
+		elem = elem->next;
+		free(tmp);
+	}
 	free(parser);
 }

@@ -18,7 +18,8 @@ int	ft_printf(const char *str, ...)
 	char			*tmp;
 	char			*pos;
 	t_parser		*parser;
-	t_conv	*conv;
+	t_conv			*conv;
+	int len;
 
 	parser = ft_init_parser();
 	va_start(parser->args, str);
@@ -33,13 +34,14 @@ int	ft_printf(const char *str, ...)
 		if (conv == NULL)
 			return (parser->len);
 		ft_eval_conv(parser->args, parser->evals, conv);
-		ft_parser_push(parser, ft_init_parser_elem(NULL, conv->len, conv));
+		ft_parser_push(parser, ft_init_parser_elem(NULL, conv->out->len, conv));
 		tmp = conv->end;
 		pos = ft_strchr(tmp, '%');
 	}
 	if (ft_strlen(tmp))
 		ft_parser_push(parser, ft_init_parser_elem(tmp, ft_strlen(tmp), NULL));
 	ft_print_parser((char *) str, parser);
-	return (parser->len);
-	//ft_free_parser(parser);
+	len = parser->len;
+	ft_free_parser(parser);
+	return (len);
 }

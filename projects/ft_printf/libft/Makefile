@@ -11,7 +11,9 @@ SRC_FILES	:= ft_atoi.c \
 				ft_itoa.c \
 				ft_bzero.c \
 				ft_split.c \
+				ft_malloc_.c \
 				ft_calloc.c \
+				ft_calloc_.c \
 				ft_memchr.c \
 				ft_memcmp.c \
 				ft_memcpy.c \
