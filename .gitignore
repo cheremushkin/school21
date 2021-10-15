@@ -1,3 +1,6 @@
 .DS_Store
 to_compile.c
 exec
+printfTester
+.idea
+*.o
