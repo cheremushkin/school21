@@ -20,7 +20,7 @@ void	ft_init_handler(t_handler *handler)
 	handler->evals[3] = ft_eval_int;
 	handler->evals[4] = ft_eval_int;
 	handler->evals[5] = ft_eval_uint;
-	handler->evals[8] = ft_eval_percent;
+//	handler->evals[8] = ft_eval_percent;
 }
 
 void	ft_handle_conv(t_handler *handler, t_conv *conv)

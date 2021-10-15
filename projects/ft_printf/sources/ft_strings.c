@@ -10,8 +10,6 @@ char	*ft_strs_join(int n, ...)
 
 	va_start(args, n);
 	out = ft_calloc(1, sizeof(char));
-	if (!out)
-		return (NULL);
 	i = 0;
 	while (i < n)
 	{
@@ -19,6 +17,8 @@ char	*ft_strs_join(int n, ...)
 		if (str)
 		{
 			tmp = ft_strjoin(out, str);
+			if (!tmp)
+				return (NULL);
 			free(out);
 			free(str);
 			out = tmp;

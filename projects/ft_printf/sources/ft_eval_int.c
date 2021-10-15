@@ -46,18 +46,3 @@ int	ft_eval_uint(va_list args, t_conv *conv)
 	ft_process_number_(&n, va_arg(args, unsigned int));
 	return (ft_eval_number(&n, conv));
 }
-
-int	ft_eval_string(va_list args, t_conv *conv)
-{
-	// conv->output = va_arg(args, char *);
-	// conv->len = ft_strlen(conv->output);
-	return (0);
-}
-
-int	ft_eval_percent(va_list args, t_conv *conv)
-{
-	// (void) args;
-	// conv->output = ft_strdup("%");
-	// conv->len = 1;
-	return (0);
-}

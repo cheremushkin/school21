@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include "ft_eval_int.h"
 # include "ft_eval_char.h"
+# include "ft_eval_string.h"
 # include "ft_conv.h"
 
 typedef struct s_handler
