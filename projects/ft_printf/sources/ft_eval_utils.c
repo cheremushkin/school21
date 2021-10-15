@@ -1,6 +1,6 @@
 #include "ft_eval_utils.h"
 
-void	ft_process_number_(t_number *n, long int num)
+void	ft_process_number_(t_number *n, long long num)
 {
 	if (num >= 0)
 	{
@@ -43,9 +43,12 @@ int ft_set_prefix_(t_conv *conv, t_number n)
 		conv->out.p[0] = '-';
 		conv->out.p_len = 1;
 	}
-	else if (conv->flags.plus)
+	else if (conv->flags.plus || conv->flags.space)
 	{
-		conv->out.p[0] = '+';
+		if (conv->flags.plus)
+			conv->out.p[0] = '+';
+		if (conv->flags.space)
+			conv->out.p[0] = ' ';
 		conv->out.p_len = 1;
 	}
 	return (0);

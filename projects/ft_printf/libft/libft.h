@@ -16,6 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# define FT_BINARY				"01"
+# define FT_OCTAL				"01234567"
+# define FT_DECIMAL				"0123456789"
+# define FT_HEXADECIMAL_LOWER	"0123456789abcdef"
+# define FT_HEXADECIMAL_UPPER	"0123456789ABCDEF"
+
 # define FT_MAX(N, M) (N > M ? N : M)
 # define FT_MIN(N, M) (N > M ? M : N)
 
@@ -56,7 +62,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-char	*ft_itoa(long int n);
+char	*ft_itoa(long long n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -71,5 +77,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*ft_char_to_str(const char c);
+char	*ft_strrev(char *str);
+char	*ft_itoa_base(long long n, const char *base);
+char	*ft_uitoa_base(unsigned long long n, const char *base);
 
 #endif

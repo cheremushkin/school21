@@ -12,14 +12,31 @@
 
 #include "libft.h"
 
-static void	ft_itoa_reverse(long long n, char *dst)
+static size_t	ft_uitoa_reverse(unsigned long long n, char *dst, const char *base)
 {
-	int				    i;
+	size_t	i;
+	size_t	base_len;
+
+	i = 0;
+	base_len = ft_strlen(base);
+	if (!n)
+		dst[i++] = '0';
+	while (n)
+	{
+		dst[i++] = base[n % base_len];
+		n /= base_len;
+	}
+	dst[i] = 0;
+	return (i);
+}
+
+static void	ft_itoa_reverse(long long n, char *dst, const char *base)
+{
 	int				    sign;
+	size_t				i;
 	unsigned long long	un;
 
 	sign = 1;
-	i = 0;
 	if (n < 0)
 	{
 		sign = -1;
@@ -27,22 +44,24 @@ static void	ft_itoa_reverse(long long n, char *dst)
 	}
 	else
 		un = (unsigned long long) n;
-	if (!un)
-		dst[i++] = '0';
-	while (un)
-	{
-		dst[i++] = un % 10 + '0';
-		un /= 10;
-	}
+	i = ft_uitoa_reverse(un, dst, base);
 	if (sign == -1)
 		dst[i++] = '-';
-	dst[i] = '\0';
+	dst[i] = 0;
 }
 
-char	*ft_itoa(long long n)
+char	*ft_itoa_base(long long n, const char *base)
 {
 	char	dst[65];
 
-	ft_itoa_reverse(n, dst);
+	ft_itoa_reverse(n, dst, base);
+	return (ft_strrev(ft_strdup(dst)));
+}
+
+char	*ft_uitoa_base(unsigned long long n, const char *base)
+{
+	char	dst[65];
+
+	ft_uitoa_reverse(n, dst, base);
 	return (ft_strrev(ft_strdup(dst)));
 }

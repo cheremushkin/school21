@@ -17,9 +17,12 @@ void	ft_init_handler(t_handler *handler)
 	handler->len = 0;
 	handler->evals[0] = ft_eval_char;
 	handler->evals[1] = ft_eval_string;
+	handler->evals[2] = ft_eval_pointer;
 	handler->evals[3] = ft_eval_int;
 	handler->evals[4] = ft_eval_int;
 	handler->evals[5] = ft_eval_uint;
+	handler->evals[6] = ft_eval_hex;
+	handler->evals[7] = ft_eval_hex;
 //	handler->evals[8] = ft_eval_percent;
 }
 

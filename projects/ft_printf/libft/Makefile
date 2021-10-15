@@ -43,7 +43,9 @@ SRC_FILES	:= ft_atoi.c \
 				ft_putstr_fd.c \
 				ft_putchar_fd.c \
 				ft_putendl_fd.c \
-				ft_char_to_str.c
+				ft_char_to_str.c \
+				ft_strrev.c \
+				ft_itoa_base.c
 SRCS		:= $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJS		:= $(SRCS:.c=.o)
 

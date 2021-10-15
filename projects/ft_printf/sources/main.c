@@ -23,21 +23,9 @@
 int	main(void)
 {
 	printf("\n\n");
-//	printf("|%-5.1s|\n", "string");
-	TEST("%s", "");
-	TEST(" %s", "");
-	TEST("%s ", "");
-	TEST(" %s ", "");
-	TEST(" %s ", "-");
-	TEST(" %s %s ", "", "-");
-	TEST(" %s %s ", " - ", "");
-	TEST(" %s %s %s %s ", " - ", "", "4", "");
-	TEST(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
-	TEST(" NULL %s NULL ", NULL);
-//    int j = ft_printf(" %c %c %c |\n", '0', 0, '1');
-//    getchar();
-//	ft_printf("%-14d\n", 0);
+	printf("%llu\n\n", ULONG_MAX);
+	// printf("%s\n", ft_itoa_base(-9223372036854775808, FT_BINARY));
+	TEST("%p %p ", ULONG_MAX, -ULONG_MAX);
 	printf("\n\n");
-//	printf("real: %d, my: %d\n", i, j);
 	return (0);
 }

@@ -21,5 +21,7 @@
 
 int ft_eval_int(va_list args, t_conv *conv);
 int ft_eval_uint(va_list args, t_conv *conv);
+int	ft_eval_hex(va_list args, t_conv *conv);
+int	ft_eval_pointer(va_list args, t_conv *conv);
 
 #endif
