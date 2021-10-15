@@ -14,14 +14,12 @@
 
 int	ft_is_conv(char c)
 {
-	return ((ft_strchr(CONVS, c) - (char *) CONVS) >= 0);
+	return ((ft_strchr(CONVERSIONS, c) - (char *) CONVERSIONS) >= 0);
 }
 
-t_flags *ft_parse_flags(char *str, int *i)
+t_flags *ft_parse_flags(char *str, t_flags *flags, int *i)
 {
-	t_flags	*flags;
-
-	flags = (t_flags *) ft_calloc(1, sizeof(t_flags));
+	ft_bzero(flags, sizeof(t_flags));
 	while (!(ft_isdigit(str[*i]) && str[*i] != '0')
 			&& str[*i] != '.'
 			&& !ft_is_conv(str[*i])

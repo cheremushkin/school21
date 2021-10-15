@@ -17,7 +17,7 @@
 # include <stdarg.h>
 # include "libft.h"
 
-# define CONVS		"cspdiuxX%"
+# define CONVERSIONS	"cspdiuxX%"
 
 typedef struct s_flags
 {
@@ -28,7 +28,7 @@ typedef struct s_flags
 	int	space;
 }	t_flags;
 
-t_flags *ft_parse_flags(char *str, int *i);
+t_flags *ft_parse_flags(char *str, t_flags *flags, int *i);
 int	    ft_parse_n(char *str, int *i);
 int	    ft_parse_width(char *str, int *i);
 int     ft_parse_precision(char *str, int *i);

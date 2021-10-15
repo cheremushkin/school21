@@ -11,37 +11,31 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_printf(const char *str, ...)
 {
 	char			*tmp;
 	char			*pos;
-	t_parser		*parser;
-	t_conv			*conv;
-	int len;
+	t_handler		handler;
+	t_conv			conv;
 
-	parser = ft_init_parser();
-	va_start(parser->args, str);
+	ft_init_handler(&handler);
+	va_start(handler.args, str);
 
 	tmp = (char *) str;
 	pos = ft_strchr(tmp, '%');
 	while (pos)
 	{
 		if (pos - tmp > 0)
-			ft_parser_push(parser, ft_init_parser_elem(tmp, pos - tmp, NULL));
-		conv = ft_parse(pos + 1);
-		if (conv == NULL)
-			return (parser->len);
-		ft_eval_conv(parser->args, parser->evals, conv);
-		ft_parser_push(parser, ft_init_parser_elem(NULL, conv->out->len, conv));
-		tmp = conv->end;
+            ft_print_handler(&handler, tmp, pos - tmp);
+		ft_parse_conv(&conv, pos + 1);
+		ft_handle_conv(&handler, &conv);
+        ft_print_handler(&handler, conv.out.str, conv.out.len);
+        free(conv.out.str);
+		tmp = conv.end;
 		pos = ft_strchr(tmp, '%');
 	}
 	if (ft_strlen(tmp))
-		ft_parser_push(parser, ft_init_parser_elem(tmp, ft_strlen(tmp), NULL));
-	ft_print_parser((char *) str, parser);
-	len = parser->len;
-	ft_free_parser(parser);
-	return (len);
+        ft_print_handler(&handler, tmp, ft_strlen(tmp));
+	return (handler.len);
 }

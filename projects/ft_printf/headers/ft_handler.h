@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_evals.h                                         :+:      :+:    :+:   */
+/*   ft_handler.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 18:28:31 by lteresia          #+#    #+#             */
+/*   Created: 2021/10/10 02:59:40 by lteresia          #+#    #+#             */
 /*   Updated: 2021/10/12 15:58:23 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_EVALS_H
-# define FT_EVALS_H
+#ifndef FT_HANDLER_H
+# define FT_HANDLER_H
 
+# include <stdlib.h>
+# include <unistd.h>
 # include <stdarg.h>
-# include "libft.h"
-# include "ft_convs.h"
+# include "ft_eval_int.h"
+# include "ft_eval_char.h"
+# include "ft_conv.h"
 
-int ft_eval_char(va_list args, t_conv *conv);
-int ft_eval_int(va_list args, t_conv *conv);
-int ft_eval_uint(va_list args, t_conv *conv);
-int ft_eval_string(va_list args, t_conv *conv);
-int ft_eval_percent(va_list args, t_conv *conv);
+typedef struct s_handler
+{
+	va_list	args;
+	size_t	len;
+	int		(*evals[9])(va_list args, t_conv *conv);
+}	t_handler;
+
+void	ft_init_handler(t_handler *parser);
+void	ft_handle_conv(t_handler *handler, t_conv *conv);
+void	ft_print_handler(t_handler *parser, char *str, size_t len);
 
 #endif

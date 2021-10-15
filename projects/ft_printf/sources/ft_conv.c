@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convs.c                                   :+:      :+:    :+:   */
+/*   ft_conv.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,18 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_convs.h"
-#include <stdio.h>
+#include "ft_conv.h"
 
-t_conv	*ft_parse(char *str)
+void	ft_parse_conv(t_conv *conv, char *str)
 {
-	int		i;
-	t_conv	*conv;
+	int	i;
 
-	conv = (t_conv *) malloc(sizeof(t_conv));
 	i = 0;
-	conv->flags = ft_parse_flags(str, &i);
-	conv->width = ft_parse_n(str, &i);
+	ft_bzero(conv, sizeof(t_conv));
+	ft_parse_flags(str, &(conv->flags), &i);
+	conv->width = ft_parse_width(str, &i);
 	while (str[i] != '.' && !ft_is_conv(str[i]) && str[i])
 		i++;
 	conv->precision = ft_parse_precision(str, &i);
@@ -30,7 +28,6 @@ t_conv	*ft_parse(char *str)
 	if (ft_is_conv(str[i]))
 		conv->code = str[i];
 	else
-		return (NULL);
+		return ;
 	conv->end = str + i + 1;
-	return (conv);
 }

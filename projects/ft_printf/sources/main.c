@@ -12,12 +12,16 @@
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int	main(void)
 {
 	printf("\n\n");
-	printf("%+3.0d|\n", 12);
-	ft_printf("%+3.0d|\n", 12);
+    int i = printf(" %c %c %c |\n", '0', 0, '1');
+    int j = ft_printf(" %c %c %c |\n", '0', 0, '1');
+//    getchar();
+//	ft_printf("%-14d\n", 0);
 	printf("\n\n");
+	printf("real: %d, my: %d\n", i, j);
 	return (0);
 }

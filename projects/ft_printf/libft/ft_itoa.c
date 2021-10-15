@@ -32,21 +32,21 @@ static char	*ft_strrev(char *str)
 	return (str);
 }
 
-static void	ft_itoa_rev_inplace(int n, char *dst)
+static void	ft_itoa_rev_inplace(long int n, char *dst)
 {
-	int				i;
-	int				sign;
-	unsigned int	un;
+	int				    i;
+	int				    sign;
+	unsigned long int	un;
 
 	sign = 1;
 	i = 0;
 	if (n < 0)
 	{
 		sign = -1;
-		un = (unsigned int) -1 * n;
+		un = (unsigned long int) -1 * n;
 	}
 	else
-		un = (unsigned int) n;
+		un = (unsigned long int) n;
 	if (!un)
 		dst[i++] = '0';
 	while (un)
@@ -59,9 +59,9 @@ static void	ft_itoa_rev_inplace(int n, char *dst)
 	dst[i] = '\0';
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long int n)
 {
-	char	dst[33];
+	char	dst[65];
 
 	ft_itoa_rev_inplace(n, dst);
 	return (ft_strrev(ft_strdup(dst)));

@@ -24,7 +24,7 @@ RM			= rm -rf
 
 all: $(NAME)
 lib: $(LIB_NAME)
-bonus: all
+bonus: lib
 
 # debug: CFLAGS += -g
 debug: all
