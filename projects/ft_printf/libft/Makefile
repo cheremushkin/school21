@@ -1,4 +1,4 @@
-NAME		:= libft.a
+NAME		= libft.a
 
 LIB			:= ar rcs
 CC			:= gcc
@@ -64,13 +64,13 @@ OBJS_B		:= $(SRCS_B:.c=.o)
 
 RM			:= rm -rf
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
 all: $(NAME)
 
 bonus: all $(OBJS_B)
 	$(LIB) $(NAME) $(OBJS_B)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c libft.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(LIB) $(NAME) $(OBJS)

@@ -1,53 +1,81 @@
-NAME		= bin
-LIB_NAME	= libftprintf.a
+NAME		= libftprintf.a
 
 LIB			= ar rcs
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
-HEADERS_DIR	= ./headers
-SRC_DIR		= ./sources
-OBJ_DIR		= ./objectives
+SRCS_DIR	= ./sources/
+HDRS_DIR	= ./headers/
+OBJS_DIR	= ./objectives/
 
-MAIN		= $(SRC_DIR)/main.c
-SRCS		= $(filter-out $(SRC_DIR)/main.c, $(wildcard $(SRC_DIR)/*.c))
-OBJS		= $(subst $(SRC_DIR),$(OBJ_DIR),$(SRCS:.c=.o))
-HEADERS		= $(wildcard $(HEADERS_DIR)/*.h)
+SRCS_FILES	= ft_conv.c \
+				ft_eval_hex.c \
+				ft_eval_number.c \
+				ft_eval_string.c \
+				ft_parsers.c \
+				ft_strs_join.c \
+				ft_eval_char.c \
+				ft_eval_int.c \
+				ft_eval_percent.c \
+				ft_handler.c \
+				ft_printf.c
 
-LIBFT_DIR	= ./libft
-LIBFT_NAME	= -lft
+HDRS_FILES	= ft_conv.h \
+				ft_eval_hex.h \
+				ft_eval_number.h \
+				ft_eval_string.h \
+				ft_parsers.h \
+				ft_strs_join.h \
+				ft_eval_char.h \
+				ft_eval_int.h \
+				ft_eval_percent.h \
+				ft_handler.h \
+				ft_printf.h
+
+OBJS_FILES		= $(SRCS_FILES:.c=.o)
+
+SRCS		= $(addprefix $(SRCS_DIR),$(SRCS_FILES))
+HDRS		= $(addprefix $(HDRS_DIR),$(HDRS_FILES))
+OBJS		= $(addprefix $(OBJS_DIR),$(OBJS_FILES))
+
+LIBFT_DIR	= ./libft/
+# LIBFT_NAME	= -lft
+LIBFT_NAME	= libft.a
 LIBFT		= $(addprefix $(LIBFT_DIR),$(LIBFT_NAME))
-LIBFT_OBJS	= $(LIBFT_DIR)/*.o
-LIBFT_MAKE	= $(MAKE) -C $(LIBFT_DIR)
+# LIBFT_OBJS	= $(LIBFT_DIR)/*.o
+# LIBFT_MAKE	= $(MAKE) -C $(LIBFT_DIR)
 
 RM			= rm -rf
 
 all: $(NAME)
-lib: $(LIB_NAME)
-bonus: lib
 
-# debug: CFLAGS += -g
-debug: all
+bonus: all
+bonus_one: all
+bonus_two: all
 
-$(NAME): libmake $(MAIN) $(OBJS) $(HEADERS)
-	$(CC) $(CFLAGS) -o $(NAME) $(MAIN) $(OBJS) -I $(HEADERS_DIR) -I $(LIBFT_DIR) -L $(LIBFT_DIR) $(LIBFT_NAME)
+$(NAME): $(OBJS)
+	$(LIB) $(NAME) $(OBJS) $(LIBFT)
 
-$(LIB_NAME): libmake $(OBJS) $(HEADERS)
-	$(LIB) $(LIB_NAME) $(OBJS) $(LIBFT_OBJS)
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(OBJS_DIR) subsystem $(HDRS) Makefile
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(HDRS_DIR) -I $(LIBFT_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADERS_DIR) -I $(LIBFT_DIR)
+subsystem:
+	@make -C $(LIBFT_DIR)
 
-libmake:
-	make -C $(LIBFT_DIR)
+$(OBJS_DIR):
+	mkdir $(OBJS_DIR)
 
 clean:
-	make -C $(LIBFT_DIR) fclean
-	$(RM) $(OBJS)
+	make -C $(LIBFT_DIR) clean
+	$(RM) $(OBJS_DIR)
 
 fclean: clean
+	make -C $(LIBFT_DIR) fclean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all ex clean fclean re libmake bonus
+norm:
+	@norminette `git ls-files`
+
+.PHONY: all subsystem bonus bonus_one bonus_two clean fclean re norm
