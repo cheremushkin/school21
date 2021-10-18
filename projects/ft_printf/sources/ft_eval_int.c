@@ -17,7 +17,7 @@ static int	ft_eval_number(t_number *n, t_conv *conv)
 	conv->out.c = ft_uitoa_base(n->u_num, FT_DECIMAL);
 	if (!conv->out.c)
 		return (1);
-	conv->out.c_len = ft_strlen(conv->out.c);
+	conv->out.c_len = (int) ft_strlen(conv->out.c);
 	if (ft_add_precision_(conv)
 		|| ft_set_int_prefix_(conv, *n)
 		|| ft_set_shift_(conv))

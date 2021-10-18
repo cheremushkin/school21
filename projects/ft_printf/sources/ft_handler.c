@@ -34,5 +34,5 @@ int	ft_handle_conv(t_handler *handler, t_conv *conv)
 
 void	ft_print_handler(t_handler *handler, char *str, size_t len)
 {
-	handler->len += write(1, str, len);
+	handler->len += (int) write(1, str, len);
 }
