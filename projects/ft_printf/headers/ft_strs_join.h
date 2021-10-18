@@ -1,5 +1,5 @@
-#ifndef FT_STRINGS_H
-# define FT_STRINGS_H
+#ifndef FT_STRS_JOIN_H
+# define FT_STRS_JOIN_H
 
 # include <stdarg.h>
 # include "libft.h"

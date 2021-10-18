@@ -12,7 +12,8 @@
 
 #include "libft.h"
 
-static size_t	ft_uitoa_reverse(unsigned long long n, char *dst, const char *base)
+static size_t	ft_uitoa_reverse(unsigned long long n,
+									char *dst, const char *base)
 {
 	size_t	i;
 	size_t	base_len;
@@ -32,7 +33,7 @@ static size_t	ft_uitoa_reverse(unsigned long long n, char *dst, const char *base
 
 static void	ft_itoa_reverse(long long n, char *dst, const char *base)
 {
-	int				    sign;
+	int					sign;
 	size_t				i;
 	unsigned long long	un;
 

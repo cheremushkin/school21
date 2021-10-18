@@ -16,6 +16,6 @@
 # include <stdarg.h>
 # include "ft_handler.h"
 
-int				ft_printf(const char *str, ...);
+int	ft_printf(const char *str, ...);
 
 #endif

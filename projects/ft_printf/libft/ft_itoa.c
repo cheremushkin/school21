@@ -14,8 +14,8 @@
 
 static void	ft_itoa_reverse(long long n, char *dst)
 {
-	int				    i;
-	int				    sign;
+	int					i;
+	int					sign;
 	unsigned long long	un;
 
 	sign = 1;
@@ -31,7 +31,7 @@ static void	ft_itoa_reverse(long long n, char *dst)
 		dst[i++] = '0';
 	while (un)
 	{
-		dst[i++] = un % 10 + '0';
+		dst[i++] = (char)(un % 10 + '0');
 		un /= 10;
 	}
 	if (sign == -1)

@@ -7,7 +7,9 @@ CFLAGS		:= -Wall -Wextra -Werror
 SRC_DIR		:= ./
 OBJ_DIR		:= ./
 
-SRC_FILES	:= ft_atoi.c \
+SRC_FILES	:= ft_max.c \
+				ft_min.c \
+				ft_atoi.c \
 				ft_itoa.c \
 				ft_bzero.c \
 				ft_split.c \
@@ -43,7 +45,6 @@ SRC_FILES	:= ft_atoi.c \
 				ft_putstr_fd.c \
 				ft_putchar_fd.c \
 				ft_putendl_fd.c \
-				ft_char_to_str.c \
 				ft_strrev.c \
 				ft_itoa_base.c
 SRCS		:= $(addprefix $(SRC_DIR), $(SRC_FILES))

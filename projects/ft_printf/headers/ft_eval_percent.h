@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_eval_percent.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 18:01:18 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/05 18:22:12 by lteresia         ###   ########.fr       */
+/*   Created: 2021/10/10 18:28:31 by lteresia          #+#    #+#             */
+/*   Updated: 2021/10/12 15:58:23 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_EVAL_PERCENT_H
+# define FT_EVAL_PERCENT_H
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*dst;
-	int		size;
+# include <stdarg.h>
+# include "libft.h"
+# include "ft_conv.h"
+# include "ft_strs_join.h"
 
-	if (s == NULL)
-		return (NULL);
-	size = ft_min((int) len, ft_max((int) ft_strlen(s) - start, 0)) + 1;
-	dst = (char *) malloc(sizeof(char) * size);
-	if (dst == NULL)
-		return (NULL);
-	ft_strlcpy(dst, s + start, size);
-	return (dst);
-}
+int	ft_eval_percent(va_list args, t_conv *conv);
+
+#endif

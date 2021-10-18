@@ -1,4 +1,4 @@
-#include "ft_strings.h"
+#include "ft_strs_join.h"
 
 char	*ft_strs_join(int n, ...)
 {

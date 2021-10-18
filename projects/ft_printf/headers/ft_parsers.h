@@ -13,25 +13,24 @@
 #ifndef FT_PARSERS_H
 # define FT_PARSERS_H
 
-# include <stdlib.h>
-# include <stdarg.h>
 # include "libft.h"
 
-# define CONVERSIONS	"cspdiuxX%"
+# define CONVERSIONS 	"\x63\x73\x70\x64\x69\x75\x78\x58\x25"
+# define N_CONVERSIONS	9
 
 typedef struct s_flags
 {
 	int	minus;
 	int	plus;
 	int	zero;
-	int hash;
+	int	hash;
 	int	space;
 }	t_flags;
 
-t_flags *ft_parse_flags(char *str, t_flags *flags, int *i);
-int	    ft_parse_n(char *str, int *i);
-int	    ft_parse_width(char *str, int *i);
-int     ft_parse_precision(char *str, int *i);
-int		ft_is_conv(char c);
+t_flags	*ft_parse_flags(char *str, t_flags *flags, int *i);
+int		ft_parse_n(char *str, int *i);
+int		ft_parse_width(char *str, int *i);
+int		ft_parse_precision(char *str, int *i);
+int		ft_get_conversion_id(char c);
 
 #endif

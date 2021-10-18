@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include "ft_conv.h"
-# include "ft_strings.h"
+# include "ft_strs_join.h"
 
 int	ft_eval_string(va_list args, t_conv *conv);
 

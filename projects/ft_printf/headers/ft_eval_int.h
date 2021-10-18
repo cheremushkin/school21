@@ -16,12 +16,10 @@
 # include <stdarg.h>
 # include "libft.h"
 # include "ft_conv.h"
-# include "ft_strings.h"
-# include "ft_eval_utils.h"
+# include "ft_strs_join.h"
+# include "ft_eval_number.h"
 
-int ft_eval_int(va_list args, t_conv *conv);
-int ft_eval_uint(va_list args, t_conv *conv);
-int	ft_eval_hex(va_list args, t_conv *conv);
-int	ft_eval_pointer(va_list args, t_conv *conv);
+int	ft_eval_int(va_list args, t_conv *conv);
+int	ft_eval_uint(va_list args, t_conv *conv);
 
 #endif

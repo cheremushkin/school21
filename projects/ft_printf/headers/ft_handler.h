@@ -13,23 +13,24 @@
 #ifndef FT_HANDLER_H
 # define FT_HANDLER_H
 
-# include <stdlib.h>
 # include <unistd.h>
-# include <stdarg.h>
+# include "libft.h"
 # include "ft_eval_int.h"
+# include "ft_eval_hex.h"
 # include "ft_eval_char.h"
 # include "ft_eval_string.h"
+# include "ft_eval_percent.h"
 # include "ft_conv.h"
 
 typedef struct s_handler
 {
 	va_list	args;
-	size_t	len;
+	int		len;
 	int		(*evals[9])(va_list args, t_conv *conv);
 }	t_handler;
 
 void	ft_init_handler(t_handler *parser);
-void	ft_handle_conv(t_handler *handler, t_conv *conv);
+int		ft_handle_conv(t_handler *handler, t_conv *conv);
 void	ft_print_handler(t_handler *parser, char *str, size_t len);
 
 #endif

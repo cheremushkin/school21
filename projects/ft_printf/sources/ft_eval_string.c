@@ -11,18 +11,17 @@
 /* ************************************************************************** */
 
 #include "ft_eval_string.h"
-#include <stdio.h>
 
 static int	ft_adjust_precision_(t_conv *conv)
 {
-	int		str_len;
-	int		len;
+	int	str_len;
+	int	len;
 
-	str_len = ft_strlen(conv->out.c);
+	str_len = (int) ft_strlen(conv->out.c);
 	if (conv->precision == -1)
 		len = str_len;
 	else
-		len = FT_MIN(conv->precision, str_len);
+		len = ft_min(conv->precision, str_len);
 	conv->out.c = ft_substr(conv->out.c, 0, len);
 	if (!conv->out.c)
 		return (1);
@@ -30,10 +29,13 @@ static int	ft_adjust_precision_(t_conv *conv)
 	return (0);
 }
 
-static int ft_set_shift_(t_conv *conv)
+static int	ft_set_string_shift_(t_conv *conv)
 {
-	conv->out.s_len = FT_MAX(FT_MAX(conv->width, conv->out.c_len) - conv->out.c_len, 0);
-	if (ft_malloc_((void **) &(conv->out.s), sizeof(char) * (conv->out.s_len + 1)))
+	conv->out.s_len = ft_max(
+			ft_max(conv->width, conv->out.c_len) - conv->out.c_len,
+			0);
+	if (ft_malloc_((void **) &(conv->out.s),
+			sizeof(char) * (conv->out.s_len + 1)))
 		return (1);
 	ft_memset(conv->out.s, ' ', conv->out.s_len);
 	conv->out.s[conv->out.s_len] = 0;
@@ -43,8 +45,10 @@ static int ft_set_shift_(t_conv *conv)
 int	ft_eval_string(va_list args, t_conv *conv)
 {
 	conv->out.c = va_arg(args, char *);
-	conv->out.c_len = ft_strlen(conv->out.c);
-	if (ft_adjust_precision_(conv) || ft_set_shift_(conv))
+	if (!conv->out.c)
+		conv->out.c = "(null)";
+	conv->out.c_len = (int) ft_strlen(conv->out.c);
+	if (ft_adjust_precision_(conv) || ft_set_string_shift_(conv))
 		return (1);
 	if (conv->flags.minus)
 		conv->out.str = ft_strs_join(2, conv->out.c, conv->out.s);

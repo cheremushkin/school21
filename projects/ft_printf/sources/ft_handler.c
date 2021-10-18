@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_handler.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -23,20 +23,13 @@ void	ft_init_handler(t_handler *handler)
 	handler->evals[5] = ft_eval_uint;
 	handler->evals[6] = ft_eval_hex;
 	handler->evals[7] = ft_eval_hex;
-//	handler->evals[8] = ft_eval_percent;
+	handler->evals[8] = ft_eval_percent;
 }
 
-void	ft_handle_conv(t_handler *handler, t_conv *conv)
+int	ft_handle_conv(t_handler *handler, t_conv *conv)
 {
-	char	*i;
-	int 	id;
-
-	i = ft_strchr(CONVERSIONS, conv->code);
-	if (!i)
-		return ;
 	ft_bzero(&(conv->out), sizeof(t_output));
-	id = (int) (i - (char *) CONVERSIONS);
-	handler->evals[id](handler->args, conv);
+	return (handler->evals[conv->id](handler->args, conv));
 }
 
 void	ft_print_handler(t_handler *handler, char *str, size_t len)

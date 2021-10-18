@@ -12,18 +12,27 @@
 
 #include "ft_parsers.h"
 
-int	ft_is_conv(char c)
+int	ft_get_conversion_id(char c)
 {
-	return ((ft_strchr(CONVERSIONS, c) - (char *) CONVERSIONS) >= 0);
+	int	i;
+
+	i = 0;
+	while (i < N_CONVERSIONS)
+	{
+		if (CONVERSIONS[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
-t_flags *ft_parse_flags(char *str, t_flags *flags, int *i)
+t_flags	*ft_parse_flags(char *str, t_flags *flags, int *i)
 {
 	ft_bzero(flags, sizeof(t_flags));
 	while (!(ft_isdigit(str[*i]) && str[*i] != '0')
-			&& str[*i] != '.'
-			&& !ft_is_conv(str[*i])
-			&& str[*i])
+		&& str[*i] != '.'
+		&& ft_get_conversion_id(str[*i]) == -1
+		&& str[*i])
 	{
 		if (str[*i] == '-')
 			flags->minus = 1;
@@ -47,12 +56,12 @@ int	ft_parse_n(char *str, int *i)
 	n = 0;
 	while (ft_isdigit(str[*i]))
 		n = n * 10 + str[(*i)++] - '0';
-	return n;
+	return (n);
 }
 
 int	ft_parse_width(char *str, int *i)
 {
-	return ft_parse_n(str, i);
+	return (ft_parse_n(str, i));
 }
 
 int	ft_parse_precision(char *str, int *i)

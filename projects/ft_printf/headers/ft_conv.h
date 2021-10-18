@@ -13,7 +13,6 @@
 #ifndef FT_CONV_H
 # define FT_CONV_H
 
-# include <stdlib.h>
 # include <stdarg.h>
 # include "libft.h"
 # include "ft_parsers.h"
@@ -21,16 +20,16 @@
 typedef struct s_output
 {
 	char	*str;
-	size_t	len;
+	int		len;
 
 	char	*p;
-	size_t	p_len;
+	int		p_len;
 
 	char	*s;
-	size_t	s_len;
+	int		s_len;
 
 	char	*c;
-	size_t	c_len;
+	int		c_len;
 }	t_output;
 
 typedef struct s_conv
@@ -38,12 +37,13 @@ typedef struct s_conv
 	t_output	out;
 	char		*end;
 	char		code;
+	int			id;
 
 	t_flags		flags;
 	int			width;
 	int			precision;
 }	t_conv;
 
-void	ft_parse_conv(t_conv *conv, char *str);
+int	ft_parse_conv(t_conv *conv, char *str);
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_eval_int.c                                     :+:      :+:    :+:    */
+/*   ft_eval_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,16 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_eval_int.h"
+#include "ft_eval_hex.h"
 
-static int	ft_eval_number(t_number *n, t_conv *conv)
+static int	ft_eval_number(t_number *n, t_conv *conv, char *base)
 {
-	conv->out.c = ft_uitoa_base(n->u_num, FT_DECIMAL);
+	conv->out.c = ft_uitoa_base(n->u_num, base);
 	if (!conv->out.c)
 		return (1);
-	conv->out.c_len = ft_strlen(conv->out.c);
+	conv->out.c_len = (int) ft_strlen(conv->out.c);
 	if (ft_add_precision_(conv)
-		|| ft_set_int_prefix_(conv, *n)
 		|| ft_set_shift_(conv))
 		return (1);
 	if (!conv->flags.minus && conv->flags.zero)
@@ -32,27 +31,29 @@ static int	ft_eval_number(t_number *n, t_conv *conv)
 	return (0);
 }
 
-static void	ft_preprocess_flags_(t_conv *conv)
+int	ft_eval_hex(va_list args, t_conv *conv)
 {
-	if ((conv->flags.zero && conv->flags.minus)
-		|| (conv->flags.zero && conv->precision != -1))
-		conv->flags.zero = 0;
+	char		*base;
+	t_number	n;
+
+	if (conv->code == 'X')
+		base = FT_HEXADECIMAL_UPPER;
+	else
+		base = FT_HEXADECIMAL_LOWER;
+	ft_process_number_(&n, (long long) va_arg(args, unsigned int));
+	if (ft_set_hex_prefix_(conv, conv->flags.hash && n.u_num > 0, conv->code))
+		return (1);
+	return (ft_eval_number(&n, conv, base));
 }
 
-int	ft_eval_int(va_list args, t_conv *conv)
+int	ft_eval_pointer(va_list args, t_conv *conv)
 {
 	t_number	n;
 
-	ft_preprocess_flags_(conv);
-	ft_process_number_(&n, va_arg(args, int));
-	return (ft_eval_number(&n, conv));
-}
-
-int	ft_eval_uint(va_list args, t_conv *conv)
-{
-	t_number	n;
-
-	ft_preprocess_flags_(conv);
-	ft_process_number_(&n, va_arg(args, unsigned int));
-	return (ft_eval_number(&n, conv));
+	n.u_num = (unsigned long long) va_arg(args, void *);
+	n.sign = 1;
+	if (ft_set_hex_prefix_(conv, 1, 'x'))
+		return (1);
+	ft_eval_number(&n, conv, FT_HEXADECIMAL_LOWER);
+	return (0);
 }

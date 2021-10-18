@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-int ft_malloc_(void **p, size_t size)
+int	ft_malloc_(void **p, size_t size)
 {
-    *p = malloc(size);
-    if (!*p)
-        return (1);
-    return (0);
+	*p = malloc(size);
+	if (!*p)
+		return (1);
+	return (0);
 }

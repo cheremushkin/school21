@@ -15,7 +15,6 @@ add_executable(ft_printf
         libft/ft_bzero.c
         libft/ft_calloc.c
         libft/ft_calloc_.c
-        libft/ft_char_to_str.c
         libft/ft_isalnum.c
         libft/ft_isalpha.c
         libft/ft_isascii.c
@@ -57,17 +56,26 @@ add_executable(ft_printf
         libft/ft_substr.c
         libft/ft_tolower.c
         libft/ft_toupper.c
+        libft/ft_strrev.c
+        libft/ft_itoa_base.c
         libft/libft.h
+        libft/ft_max.c
+        libft/ft_min.c
         sources/ft_conv.c
         sources/ft_eval_int.c
         sources/ft_parsers.c
         sources/ft_printf.c
         sources/ft_handler.c
-        sources/main.c sources/ft_strings.c
-        headers/ft_strings.h
-        sources/ft_eval_utils.c
-        headers/ft_eval_utils.h
+        sources/main.c
+        sources/ft_strs_join.c
+        headers/ft_strs_join.h
+        sources/ft_eval_number.c
+        headers/ft_eval_number.h
         sources/ft_eval_char.c
         headers/ft_eval_char.h
         sources/ft_eval_string.c
-        headers/ft_eval_string.h)
+        headers/ft_eval_string.h
+        headers/ft_eval_percent.h
+        sources/ft_eval_percent.c
+        sources/ft_eval_hex.c
+        headers/ft_eval_hex.h)

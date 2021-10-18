@@ -16,16 +16,15 @@
 
 #define TEST(...) \
     printf("system's: "); \
-	printf("\n%d\n", printf(__VA_ARGS__)); \
+	printf(" | -> %d\n", printf(__VA_ARGS__)); \
 	ft_printf("my      : "); \
-	ft_printf("\n%d\n", ft_printf(__VA_ARGS__));
+	ft_printf(" | -> %d", ft_printf(__VA_ARGS__));
 
 int	main(void)
 {
-	printf("\n\n");
-	printf("%llu\n\n", ULONG_MAX);
-	// printf("%s\n", ft_itoa_base(-9223372036854775808, FT_BINARY));
-	TEST("%p %p ", ULONG_MAX, -ULONG_MAX);
-	printf("\n\n");
+//	printf("\n\n");
+//	TEST(" %p %p ", 0, 0);
+//	printf("\n\n");
+
 	return (0);
 }

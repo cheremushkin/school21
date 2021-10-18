@@ -3,7 +3,7 @@ LIB_NAME	= libftprintf.a
 
 LIB			= ar rcs
 CC			= gcc
-CFLAGS		= -Wall
+CFLAGS		= -Wall -Wextra -Werror
 
 HEADERS_DIR	= ./headers
 SRC_DIR		= ./sources

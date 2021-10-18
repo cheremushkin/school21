@@ -16,14 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define FT_BINARY				"01"
-# define FT_OCTAL				"01234567"
 # define FT_DECIMAL				"0123456789"
 # define FT_HEXADECIMAL_LOWER	"0123456789abcdef"
 # define FT_HEXADECIMAL_UPPER	"0123456789ABCDEF"
-
-# define FT_MAX(N, M) (N > M ? N : M)
-# define FT_MIN(N, M) (N > M ? M : N)
 
 typedef struct s_list
 {
@@ -51,9 +46,9 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *str);
-int 	ft_malloc_(void **p, size_t size);
+int		ft_malloc_(void **p, size_t size);
 void	*ft_calloc(size_t count, size_t size);
-int 	ft_calloc_(void **p, size_t count, size_t size);
+int		ft_calloc_(void **p, size_t count, size_t size);
 char	*ft_strdup(const char *src);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	**ft_split(char const *str, char c);
@@ -76,9 +71,10 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-char	*ft_char_to_str(const char c);
 char	*ft_strrev(char *str);
 char	*ft_itoa_base(long long n, const char *base);
 char	*ft_uitoa_base(unsigned long long n, const char *base);
+int		ft_max(int n, int m);
+int		ft_min(int n, int m);
 
 #endif
