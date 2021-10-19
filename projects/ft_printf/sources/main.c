@@ -14,17 +14,16 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define TEST(...) \
-    printf("system's: "); \
-	printf(" | -> %d\n", printf(__VA_ARGS__)); \
-	ft_printf("my      : "); \
-	ft_printf(" | -> %d", ft_printf(__VA_ARGS__));
+// #define TEST(...) \
+//     printf("system's: "); \
+// 	printf(" | -> %d\n", printf(__VA_ARGS__)); \
+// 	ft_printf("my      : "); \
+// 	ft_printf(" | -> %d", ft_printf(__VA_ARGS__));
+
+#include <stdlib.h>
 
 int	main(void)
 {
-//	printf("\n\n");
-//	TEST(" %p %p ", 0, 0);
-//	printf("\n\n");
-
+	printf(" | -> %d\n", printf("%100001.10d", 100));
 	return (0);
 }

@@ -12,6 +12,13 @@
 
 #include "ft_conv.h"
 
+static int	ft_sanity_check(t_conv *conv)
+{
+	if (conv->width == -2 || conv->precision == -2)
+		return (1);
+	return (0);
+}
+
 int	ft_parse_conv(t_conv *conv, char *str)
 {
 	int	i;
@@ -35,5 +42,5 @@ int	ft_parse_conv(t_conv *conv, char *str)
 	conv->code = str[i];
 	conv->id = id;
 	conv->end = str + i + 1;
-	return (0);
+	return (ft_sanity_check(conv));
 }

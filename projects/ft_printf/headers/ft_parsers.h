@@ -13,10 +13,13 @@
 #ifndef FT_PARSERS_H
 # define FT_PARSERS_H
 
+# include <limits.h>
 # include "libft.h"
 
 # define CONVERSIONS 	"\x63\x73\x70\x64\x69\x75\x78\x58\x25"
 # define N_CONVERSIONS	9
+// maximum width/precision that can be printed
+# define FT_MAX_PRINT_N	1000000
 
 typedef struct s_flags
 {
