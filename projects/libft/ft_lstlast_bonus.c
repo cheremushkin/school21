@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@ t_list	*ft_lstlast(t_list *lst)
 	t_list	*elem;
 
 	elem = lst;
-	if (elem == NULL)
+	if (!elem)
 		return (NULL);
 	while (elem->next)
 		elem = elem->next;

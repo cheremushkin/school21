@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@ t_list	*ft_lstnew(void *content)
 	t_list	*elem;
 
 	elem = (t_list *) malloc(sizeof(t_list));
-	if (elem == NULL)
+	if (!elem)
 		return (NULL);
 	elem->content = content;
 	elem->next = NULL;
