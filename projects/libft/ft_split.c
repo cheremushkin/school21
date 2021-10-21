@@ -12,24 +12,14 @@
 
 #include "libft.h"
 
-static char	*ft_strndup(const char *src, int n)
+static int	ft_strndup_(char **dst, const char *src, long int n)
 {
-	char	*dst;
-	int		i;
-
-	dst = (char *) malloc(sizeof(char) * (n + 1));
-	if (dst == NULL)
-		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		dst[i] = src[i];
-		if (src[i] == '\0')
-			break ;
-		i++;
-	}
-	dst[n] = '\0';
-	return (dst);
+	*dst = (char *) malloc(sizeof(char) * (n + 1));
+	if (!*dst)
+		return (1);
+	ft_memcpy(*dst, src, n);
+	*(*dst + n) = 0;
+	return (0);
 }
 
 static int	ft_count_words(const char *str, char c)
@@ -53,7 +43,7 @@ static int	ft_count_words(const char *str, char c)
 	return (n_words);
 }
 
-static void	ft_populate(const char *str, char c, char **strs)
+static int	ft_populate_(const char *str, char c, char **strs)
 {
 	int		in_word;
 	int		n_words;
@@ -66,7 +56,8 @@ static void	ft_populate(const char *str, char c, char **strs)
 		if (in_word && *str == c)
 		{
 			in_word = 0;
-			strs[n_words - 1] = ft_strndup(start, str - start);
+			if (ft_strndup_(strs + n_words - 1, start, str - start))
+				return (1);
 		}
 		else if (!in_word && *str != c)
 		{
@@ -76,8 +67,21 @@ static void	ft_populate(const char *str, char c, char **strs)
 		}
 		str++;
 	}
-	if (in_word)
-		strs[n_words - 1] = ft_strndup(start, str - start);
+	if (in_word && ft_strndup_(strs + n_words - 1, start, str - start))
+		return (1);
+	return (0);
+}
+
+static void	ft_free_strs(char **strs)
+{
+	int	i;
+
+	if (!strs)
+		return ;
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
 }
 
 char	**ft_split(char const *str, char c)
@@ -85,13 +89,14 @@ char	**ft_split(char const *str, char c)
 	int		n_words;
 	char	**strs;
 
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	n_words = ft_count_words(str, c);
-	strs = (char **) malloc(sizeof(char *) * (n_words + 1));
-	if (strs == NULL)
+	strs = (char **) ft_calloc(n_words + 1, sizeof(char *));
+	if (!strs || ft_populate_(str, c, strs))
+	{
+		ft_free_strs(strs);
 		return (NULL);
-	ft_populate(str, c, strs);
-	strs[n_words] = NULL;
+	}
 	return (strs);
 }

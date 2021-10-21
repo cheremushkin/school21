@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_istrimable(char c, int *hash)
+#include <stdio.h>
+static int	ft_istrimable(char c, unsigned char *hash)
 {
 	return (hash[(int) c]);
 }
 
-static int	ft_lstrtrim(char const *s, int *hash)
+static int	ft_lstrtrim(char const *s, unsigned char *hash)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ static int	ft_lstrtrim(char const *s, int *hash)
 	return (i);
 }
 
-static int	ft_rstrtrim(char const *s, int *hash)
+static int	ft_rstrtrim(char const *s, unsigned char *hash)
 {
 	int	i;
 
@@ -39,13 +39,13 @@ static int	ft_rstrtrim(char const *s, int *hash)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	hash[255];
+	unsigned char	hash[256];
 	int	l_pos;
 	int	r_pos;
 
-	if (s1 == NULL)
+	if (!s1)
 		return (NULL);
-	ft_bzero(hash, 255);
+	ft_bzero(hash, 256);
 	while (*set)
 		hash[(int) *(set++)] = 1;
 	r_pos = ft_rstrtrim(s1, hash);

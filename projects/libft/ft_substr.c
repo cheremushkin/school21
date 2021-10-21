@@ -12,30 +12,30 @@
 
 #include "libft.h"
 
-static int	ft_min(int const n, int const m)
+static unsigned int	ft_min(unsigned int const n, unsigned int const m)
 {
 	if (n > m)
 		return (m);
 	return (n);
 }
 
-static int	ft_max(int const n, int const m)
+static unsigned int	ft_sub_to_zero(unsigned int const n, unsigned int const m)
 {
 	if (n > m)
-		return (n);
-	return (m);
+		return (n - m);
+	return (0);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dst;
-	int		size;
+	size_t	size;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
-	size = ft_min(len, ft_max(ft_strlen(s) - start, 0)) + 1;
+	size = ft_min(len, ft_sub_to_zero(ft_strlen(s), start)) + 1;
 	dst = (char *) malloc(sizeof(char) * size);
-	if (dst == NULL)
+	if (!dst)
 		return (NULL);
 	ft_strlcpy(dst, s + start, size);
 	return (dst);
