@@ -36,7 +36,7 @@ int	ft_printf(const char *str, ...)
 			ft_print_handler(&handler, tmp, pos - tmp);
 		if (ft_parse_conv(&conv, pos + 1)
 			|| ft_handle_conv(&handler, &conv))
-			return (ft_printf_return(handler.len));
+			return (ft_printf_return(-1));
 		ft_print_handler(&handler, conv.out.str, conv.out.len);
 		free(conv.out.str);
 		tmp = conv.end;

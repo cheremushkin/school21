@@ -51,11 +51,15 @@ t_flags	*ft_parse_flags(char *str, t_flags *flags, int *i)
 
 int	ft_parse_n(char *str, int *i)
 {
-	int	n;
+	unsigned int	n;
 
 	n = 0;
 	while (ft_isdigit(str[*i]))
+	{
 		n = n * 10 + str[(*i)++] - '0';
+		if (n > FT_MAX_PRINT_N)
+			return (-2);
+	}
 	return (n);
 }
 

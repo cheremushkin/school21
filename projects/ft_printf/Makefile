@@ -40,6 +40,7 @@ OBJS		:= $(addprefix $(OBJS_DIR),$(OBJS_FILES))
 
 LIBFT_DIR	:= ./libft/
 LIBFT_NAME	:= libft.a
+LIBFT_OBJS	:= $(LIBFT_DIR)*.o
 LIBFT		:= $(addprefix $(LIBFT_DIR),$(LIBFT_NAME))
 
 RM			:= rm -rf
@@ -51,7 +52,7 @@ bonus_one: all
 bonus_two: all
 
 $(NAME): $(OBJS)
-	$(LIB) $(NAME) $(OBJS) $(LIBFT)
+	$(LIB) $(NAME) $(OBJS) $(LIBFT_OBJS)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HDRS) Makefile | $(OBJS_DIR) subsystem
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(HDRS_DIR) -I $(LIBFT_DIR)

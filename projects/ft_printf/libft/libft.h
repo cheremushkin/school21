@@ -6,7 +6,7 @@
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:42:49 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/06 15:57:01 by lteresia         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:11:32 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	*ft_calloc(size_t count, size_t size);
 int		ft_calloc_(void **p, size_t count, size_t size);
 char	*ft_strdup(const char *src);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-char	**ft_split(char const *str, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);

@@ -12,7 +12,6 @@ SRC_FILES	:= ft_max.c \
 				ft_atoi.c \
 				ft_itoa.c \
 				ft_bzero.c \
-				ft_split.c \
 				ft_malloc_.c \
 				ft_calloc.c \
 				ft_calloc_.c \
@@ -69,7 +68,7 @@ all: $(NAME)
 bonus: all $(OBJS_B)
 	$(LIB) $(NAME) $(OBJS_B)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c libft.h
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c libft.h Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
