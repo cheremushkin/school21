@@ -1,5 +1,5 @@
 <div align="center">
-  <h2 style="display: inline-block">printf</h2>
+  <h2 style="display: inline-block">ft_printf</h2>
 </div>
 
 A self-written `printf` function with `cspdiuxX%` conversions, `# +-0.` flags and width.
