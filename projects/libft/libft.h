@@ -15,6 +15,9 @@
 
 # include <stdlib.h>
 
+# define FT_ATOI_POS_MAX 2147483647
+# define FT_ATOI_NEG_MAX 2147483648
+
 typedef struct s_list
 {
 	void			*content;

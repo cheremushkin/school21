@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 static int	ft_is_space(char c)
 {
 	if (c == '\t' || c == '\n' || c == '\v'
@@ -48,9 +50,9 @@ int	ft_atoi(const char *str)
 	}
 	while (ft_is_digit(*str))
 	{
-		if (n > 2147483647 && sign == 1)
+		if (n > FT_ATOI_POS_MAX && sign == 1)
 			return (-1);
-		else if (n > 2147483648 && sign == -1)
+		else if (n > FT_ATOI_NEG_MAX && sign == -1)
 			return (0);
 		n = n * 10 + *str++ - '0';
 	}
