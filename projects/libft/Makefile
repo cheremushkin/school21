@@ -44,19 +44,11 @@ SRCS_FILES		:= ft_atoi.c \
 SRCS			:= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS			:= $(SRCS:.c=.o)
 
-SRCS_B_FILES	:= ft_lstnew_bonus.c \
-					ft_lstmap_bonus.c \
-					ft_lstiter_bonus.c \
-					ft_lstlast_bonus.c \
-					ft_lstsize_bonus.c \
-					ft_lstclear_bonus.c \
-					ft_lstdelone_bonus.c \
-					ft_lstadd_back_bonus.c \
-					ft_lstadd_front_bonus.c
 SRCS_B			:= $(addprefix $(SRCS_DIR), $(SRCS_B_FILES))
 OBJS_B			:= $(SRCS_B:.c=.o)
 
 HDRS			:= ./libft.h
+DEPS
 
 RM				:= rm -rf
 

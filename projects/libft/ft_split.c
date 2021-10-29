@@ -89,8 +89,6 @@ char	**ft_split(char const *str, char c)
 	int		n_words;
 	char	**strs;
 
-	if (!str)
-		return (NULL);
 	n_words = ft_count_words(str, c);
 	strs = (char **) ft_calloc(n_words + 1, sizeof(char *));
 	if (!strs || ft_populate_(str, c, strs))

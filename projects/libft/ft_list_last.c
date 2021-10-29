@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_list_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 21:04:38 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/05 21:05:25 by lteresia         ###   ########.fr       */
+/*   Created: 2021/10/05 21:08:10 by lteresia          #+#    #+#             */
+/*   Updated: 2021/10/05 21:08:47 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_list_last(t_list *head)
 {
-	if (!new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+	t_list	*elem;
+
+	elem = head;
+	if (!elem)
+		return (NULL);
+	while (elem->next)
+		elem = elem->next;
+	return (elem);
 }

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_list_delete_elem.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 21:09:08 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/05 21:10:14 by lteresia         ###   ########.fr       */
+/*   Created: 2021/10/05 21:11:34 by lteresia          #+#    #+#             */
+/*   Updated: 2021/10/05 21:13:55 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_list_delete_elem(t_list *elem, void (*del)(void *))
 {
-	t_list	*last;
-
-	if (!new)
+	if (!elem)
 		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	if (del)
+		del(elem->content);
+	free(elem);
 }

@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lteresia <lteresia@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 21:46:06 by lteresia          #+#    #+#             */
-/*   Updated: 2021/10/05 21:50:23 by lteresia         ###   ########.fr       */
+/*   Created: 2021/10/05 21:33:47 by lteresia          #+#    #+#             */
+/*   Updated: 2021/10/05 21:35:21 by lteresia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_list_foreach(t_list *head, void (*f)(void *))
 {
-	t_list	*new;
-	t_list	*tmp;
+	t_list	*elem;
 
-	if (!f)
-		return (NULL);
-	new = NULL;
-	while (lst)
+	elem = head;
+	while (current)
 	{
-		tmp = ft_lstnew(f(lst->content));
-		if (!tmp)
-		{
-			ft_lstclear(&new, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new, tmp);
-		lst = lst->next;
+		f(elem->content);
+		elem = elem->next;
 	}
-	return (new);
 }

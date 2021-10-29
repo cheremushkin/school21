@@ -43,8 +43,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int				l_pos;
 	int				r_pos;
 
-	if (!s1)
-		return (NULL);
 	ft_bzero(hash, 256);
 	while (*set)
 		hash[(int) *(set++)] = 1;

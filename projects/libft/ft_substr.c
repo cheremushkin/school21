@@ -31,8 +31,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*dst;
 	size_t	size;
 
-	if (!s)
-		return (NULL);
 	size = ft_min(len, ft_sub_to_zero(ft_strlen(s), start)) + 1;
 	dst = (char *) malloc(sizeof(char) * size);
 	if (!dst)
