@@ -63,8 +63,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-int		ft_max(int n, int m);
-int		ft_min(int n, int m);
 int		ft_abs(int n);
 
 t_list	*ft_list_create_elem(void *content);

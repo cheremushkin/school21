@@ -17,7 +17,7 @@ void	ft_list_foreach(t_list *head, void (*f)(void *))
 	t_list	*elem;
 
 	elem = head;
-	while (current)
+	while (elem)
 	{
 		f(elem->content);
 		elem = elem->next;
